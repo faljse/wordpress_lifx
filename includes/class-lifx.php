@@ -280,14 +280,23 @@ class lifx {
 	} // End _log_version_number ()
 
 	public function lifx_action_callback () {
-		$api_token = 'c6deb63202c78a59cd92667e43a8537052a7eb296e3105246f0313049322cc1a';
-		$lifx = new Kz\Lifx\Lifx($api_token);
 
-		$color = get_option('wpt_color');
-		$period = get_option('wpt_period');
-		$cycles = get_option('wpt_cycles');
+		$color = get_option('lifx_color');
+		$from_color = get_option('lifx_from_color');
+		$period = get_option('lifx_period');
+		$cycles = get_option('lifx_cycles');
+		$peak = get_option('lifx_peak_percent');
+		$token = get_option('lifx_token');
+		$selector = get_option('lifx_selector');
+		$power_on = get_option('lifx_power_on');
+		$persist = get_option('lifx_persist');
+		$use_from = get_option('lifx_use_from');
+
+		$api_token = 'c6deb63202c78a59cd92667e43a8537052a7eb296e3105246f0313049322cc1a';
+		$lifx = new Kz\Lifx\Lifx($token);
+
 		//$lifx->toggleLights();
-		$lifx->breatheLights('all', 'green', null, $period, $cycles, false, true, 0.5);
+		$lifx->breatheLights($selector, $color, ($use_from=="on"?$from_color:null), $period, $cycles, ($persist=="on"?true:false), ($power_on=="on"?true:false), $peak/100);
 	} // End lifx_action_callback ()
 
 	public function lifx_ajax_footer() { ?>

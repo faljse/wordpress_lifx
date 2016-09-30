@@ -39,7 +39,7 @@ class lifx_Settings {
 	public function __construct ( $parent ) {
 		$this->parent = $parent;
 
-		$this->base = 'wpt_';
+		$this->base = 'lifx_';
 
 		// Initialise settings
 		add_action( 'init', array( $this, 'init_settings' ), 11 );
@@ -149,18 +149,28 @@ class lifx_Settings {
 					'default'		=> '#21759B'
 				),
 				array(
+					'id' 			=> 'use_from',
+					'label'			=> __( 'use_from' , 'lifx' ),
+					'description'	=> __( '', 'lifx' ),
+					'type'			=> 'checkbox',
+					'default'		=> '',
+					'placeholder'	=> __( '', 'lifx' )
+				),
+
+				array(
 					'id' 			=> 'from_color',
 					'label'			=> __( 'from colour', 'lifx' ),
 					'description'	=> __( 'This uses WordPress\' built-in colour picker - the option is stored as the colour\'s hex code.', 'lifx' ),
 					'type'			=> 'color',
 					'default'		=> '#21759B'
 				),
+
 				array(
 					'id' 			=> 'period',
 					'label'			=> __( 'period' , 'lifx' ),
 					'description'	=> __( 'This is a standard number field - if this field contains anything other than numbers then the form will not be submitted.', 'lifx' ),
 					'type'			=> 'number',
-					'default'		=> '',
+					'default'		=> '1',
 					'placeholder'	=> __( '1', 'lifx' )
 				),
 				array(
@@ -168,16 +178,16 @@ class lifx_Settings {
 					'label'			=> __( 'cycles' , 'lifx' ),
 					'description'	=> __( 'This is a standard number field - if this field contains anything other than numbers then the form will not be submitted.', 'lifx' ),
 					'type'			=> 'number',
-					'default'		=> '',
+					'default'		=> '1',
 					'placeholder'	=> __( '1', 'lifx' )
 				),
 				array(
-					'id' 			=> 'peak',
-					'label'			=> __( 'peak' , 'lifx' ),
+					'id' 			=> 'peak_percent',
+					'label'			=> __( 'peak percent' , 'lifx' ),
 					'description'	=> __( 'This is a standard number field - if this field contains anything other than numbers then the form will not be submitted.', 'lifx' ),
 					'type'			=> 'number',
 					'default'		=> '',
-					'placeholder'	=> __( '0.5', 'lifx' )
+					'placeholder'	=> __( '50', 'lifx' )
 				),
 
 
